@@ -18,11 +18,6 @@ function App() {
     }
   }, [board]);
 
-  // useEffect(() => {
-  //   if (result.state != "none") {
-  //     restartGame();
-  //   }
-  // }, [result]);
 
   const chooseSquare = (square) => {
     setBoard(
