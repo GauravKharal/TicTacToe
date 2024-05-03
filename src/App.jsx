@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     checkWin();
-    
+
     if (player == "X") {
       setPlayer("O");
     } else {
@@ -18,12 +18,11 @@ function App() {
     }
   }, [board]);
 
-  useEffect(() => {
-    if (result.state != "none") {
-      alert(`Winning Player: ${result.winner}`);
-      restartGame();
-    }
-  }, [result]);
+  // useEffect(() => {
+  //   if (result.state != "none") {
+  //     restartGame();
+  //   }
+  // }, [result]);
 
   const chooseSquare = (square) => {
     setBoard(
@@ -48,7 +47,7 @@ function App() {
       });
       if (foundWinningPattern) {
         setResult({ winner: player, state: "Won" });
-      }else{
+      } else {
         checkTie();
       }
     });
@@ -69,6 +68,7 @@ function App() {
   const restartGame = () => {
     setBoard(["", "", "", "", "", "", "", "", ""]);
     setPlayer("O");
+    setResult({ winner: "none", state: "none" });
   };
 
   return (
@@ -82,18 +82,21 @@ function App() {
               chooseSquare={() => {
                 chooseSquare(0);
               }}
+              state={result.state}
             />
             <Square
               val={board[1]}
               chooseSquare={() => {
                 chooseSquare(1);
               }}
+              state={result.state}
             />
             <Square
               val={board[2]}
               chooseSquare={() => {
                 chooseSquare(2);
               }}
+              state={result.state}
             />
           </div>
           <div className="Row">
@@ -102,18 +105,21 @@ function App() {
               chooseSquare={() => {
                 chooseSquare(3);
               }}
+              state={result.state}
             />
             <Square
               val={board[4]}
               chooseSquare={() => {
                 chooseSquare(4);
               }}
+              state={result.state}
             />
             <Square
               val={board[5]}
               chooseSquare={() => {
                 chooseSquare(5);
               }}
+              state={result.state}
             />
           </div>
           <div className="Row">
@@ -122,21 +128,33 @@ function App() {
               chooseSquare={() => {
                 chooseSquare(6);
               }}
+              state={result.state}
             />
             <Square
               val={board[7]}
               chooseSquare={() => {
                 chooseSquare(7);
               }}
+              state={result.state}
             />
             <Square
               val={board[8]}
               chooseSquare={() => {
                 chooseSquare(8);
               }}
+              state={result.state}
             />
           </div>
         </section>
+        <h3>
+          {result.winner != "none" && (
+            <>
+              <em>Winner:</em> <strong>{result.winner}</strong> &nbsp;&nbsp;&nbsp; <em>Verdict:</em>{" "}
+              <strong>{result.state}</strong>
+            </>
+          )}
+        </h3>
+        <button className="Restart" onClick={restartGame}>Restart Game</button>
       </section>
     </>
   );

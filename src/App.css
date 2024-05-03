@@ -45,3 +45,27 @@ body {
 .Square:active{
   background-color: beige;
 }
+
+.Restart{
+  width: 200px;
+  height: 50px;
+  background-color: cyan;
+  border-radius: 10px;
+  border: none;
+  font-family: "Poppins",sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.Restart:hover{
+  background-color: bisque;
+}
+
+.Restart:active{
+  background-color: blueviolet;
+  color: antiquewhite;
+}
+
+h3{
+  font-weight: 400;
+}

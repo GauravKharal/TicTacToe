@@ -1,8 +1,8 @@
 import "../App.css";
 
-const Square = ({ val, chooseSquare }) => {
+const Square = ({ val, chooseSquare, state }) => {
   return (
-    <button className="Square" onClick={chooseSquare} disabled={val!=""}>
+    <button className="Square" onClick={chooseSquare} disabled={val!="" || state != "none"}>
       {val}
     </button>
   );
